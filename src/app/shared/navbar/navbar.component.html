@@ -1,0 +1,82 @@
+<div class="surface-card shadow-2 px-4 py-2">
+  <div class="flex justify-content-between align-items-center">
+    <!-- Logo e Breadcrumb -->
+    <div class="flex align-items-center gap-4">
+      <img src="https://raw.githubusercontent.com/jsoapdoc/jsoapdoc-core/master/src/main/resources/img/logo.svg" height="50" alt="Logo" />
+      <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+    </div>
+
+    <!-- Barra di ricerca -->
+    <div class="flex-grow-1 mx-4">
+      <span class="p-input-icon-left w-full">
+        <i class="pi pi-search"></i>
+        <input
+          type="text"
+          pInputText
+          class="w-full"
+          placeholder="Cerca..."
+          (input)="onSearch($event)"
+        />
+      </span>
+    </div>
+
+    <!-- Menu destra -->
+    <div class="flex align-items-center gap-3">
+      <!-- Tema chiaro/scuro -->
+      <button
+        pButton
+        icon="pi pi-moon"
+        class="p-button-rounded p-button-text"
+      ></button>
+
+      <!-- Notifiche -->
+      <button
+        pButton
+        icon="pi pi-bell"
+        class="p-button-rounded p-button-text"
+        pBadge
+        [value]="notifications.toString()"
+        severity="danger"
+      ></button>
+
+      <!-- Aiuto -->
+      <button
+        pButton
+        icon="pi pi-question-circle"
+        class="p-button-rounded p-button-text"
+      ></button>
+
+      <!-- Menu utente -->
+      <div class="flex align-items-center gap-2">
+        <p-avatar
+          image="url-to-user-image"
+          shape="circle"
+          size="normal"
+          [pTooltip]="'Nome Utente'"
+          tooltipPosition="bottom"
+        >
+        </p-avatar>
+        <p-menu #menu [model]="userMenuItems" [popup]="true"> </p-menu>
+        <button
+          pButton
+          icon="pi pi-angle-down"
+          class="p-button-text p-button-rounded"
+          (click)="menu.toggle($event)"
+        ></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Area per mostrare notifiche o messaggi di sistema -->
+<div class="bg-primary-50 px-4 py-2" *ngIf="false">
+  <div class="flex align-items-center gap-2">
+    <i class="pi pi-info-circle text-primary"></i>
+    <span>Messaggio di sistema o notifica importante</span>
+    <button
+      pButton
+      icon="pi pi-times"
+      class="p-button-rounded p-button-text p-button-sm ml-auto"
+    ></button>
+  </div>
+</div>

@@ -17,12 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "baseHref": "/jsoapdoc-frontend",
             "outputPath": "dist/jsoapdoc-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -32,7 +31,11 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeflex/primeflex.css"
             ],
             "scripts": []
           },
@@ -53,6 +56,7 @@
               "outputHashing": "all"
             },
             "development": {
+              "baseHref": "/",
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
@@ -78,10 +82,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -91,12 +92,19 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeflex/primeflex.css"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "6ca30102-8b36-4d24-91ff-686486d64740"
   }
 }
