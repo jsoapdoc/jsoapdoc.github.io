@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { ButtonModule } from 'primeng/button';
@@ -7,6 +7,8 @@ import { AvatarModule } from 'primeng/avatar';
 import { MenuModule } from 'primeng/menu';
 import { BadgeModule } from 'primeng/badge';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -21,32 +23,38 @@ import { CommonModule } from '@angular/common';
     BadgeModule,
   ],
   templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
   items: MenuItem[] | undefined;
   home: MenuItem | undefined;
   userMenuItems: MenuItem[] | undefined;
-  notifications: number = 3;
+  notifications: number = 0;
+  isDarkTheme = false;
+  severity: string = 'info';
+
+  private router = inject(Router);
+  private activatedRoute = inject(ActivatedRoute);
 
   ngOnInit() {
-    this.items = [
-      { label: 'Electronics' },
-      { label: 'Computer' },
-      { label: 'Accessories' },
-      { label: 'Keyboard' },
-      { label: 'Wireless' },
-    ];
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.updateBreadcrumb();
+      });
+
+    this.items = [];
 
     this.home = { icon: 'pi pi-home', routerLink: '/' };
 
     this.userMenuItems = [
       {
-        label: 'Profilo',
+        label: 'Account',
         icon: 'pi pi-user',
         routerLink: '/profile',
       },
       {
-        label: 'Impostazioni',
+        label: 'Settings',
         icon: 'pi pi-cog',
         routerLink: '/settings',
       },
@@ -65,5 +73,57 @@ export class NavbarComponent implements OnInit {
 
   onSearch(event: any) {
     // logica ricerca
+  }
+
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme;
+    document.body.classList.toggle('dark-theme', this.isDarkTheme);
+    document.body.style.transition = 'background-color 0.5s ease';
+  }
+
+  updateBreadcrumb() {
+    const root: ActivatedRoute = this.activatedRoute.root;
+    this.items = this.createBreadcrumbs(root);
+  }
+
+  private createBreadcrumbs(
+    route: ActivatedRoute,
+    url: string = '',
+    breadcrumbs: MenuItem[] = []
+  ): MenuItem[] {
+    const children: ActivatedRoute[] = route.children;
+
+    if (children.length === 0) {
+      return breadcrumbs;
+    }
+
+    for (const child of children) {
+      const routeURL: string = child.snapshot.url
+        .map((segment) => segment.path)
+        .join('/');
+      const routeTitle: string = child.snapshot.data['title'];
+      if (routeURL !== '') {
+        url += `/${routeURL}`;
+      }
+
+      breadcrumbs.push({ label: routeTitle, routerLink: url });
+      return this.createBreadcrumbs(child, url, breadcrumbs);
+    }
+    return breadcrumbs;
+  }
+
+  getNotificationsState() {
+    switch (true) {
+      case this.notifications === 0:
+        return 'success';
+      case this.notifications === 1:
+        return 'info';
+      case this.notifications === 2:
+        return 'warning';
+      case this.notifications >= 3:
+        return 'danger';
+      default:
+        return 'info';
+    }
   }
 }
