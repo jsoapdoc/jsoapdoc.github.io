@@ -1,78 +1,88 @@
-<div class="navbar surface-card shadow-2 px-4 py-2">
-  <div class="flex justify-content-between align-items-center">
-    <!-- Logo and Title -->
-    <a routerLink="/" class="no-decoration">
-      <div class="flex align-items-center">
-        <img
-          src="https://raw.githubusercontent.com/jsoapdoc/jsoapdoc-core/master/src/main/resources/img/logo.svg"
-          height="50"
-          alt="Logo"
-        />
-        <p>JSoapDoc</p>
-      </div>
-    </a>
-
-    <!-- Right menu -->
-    <div class="flex align-items-center gap-3">
-      <!-- Search bar -->
-      <div class="flex">
-        <span class="p-input-icon-left">
-          <i class="pi pi-search"></i>
-          <input
-            type="text"
-            pInputText
-            class="w-full"
-            placeholder="Search..."
-            (input)="onSearch($event)"
+<!-- Navbar Container -->
+<div class="surface-card shadow-2">
+  <div class="container">
+    <div class="flex justify-content-between align-items-center px-4 py-2">
+      <!-- Left Side: Logo and Title -->
+      <a routerLink="/" class="no-underline">
+        <div class="flex align-items-center gap-2">
+          <img
+            src="https://raw.githubusercontent.com/jsoapdoc/jsoapdoc-core/master/src/main/resources/img/logo.svg"
+            class="h-3rem"
+            alt="Logo"
           />
-        </span>
-      </div>
-      <!-- Theme light/dark -->
-      <button
-        pButton
-        [icon]="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
-        class="p-button-rounded p-button-text"
-        (click)="toggleTheme()"
-      ></button>
+          <span class="text-900 font-medium">JSoapDoc</span>
+        </div>
+      </a>
 
-      <!-- Notifications -->
-      <button
-        pButton
-        icon="pi pi-bell"
-        class="p-button-rounded p-button-text"
-        pBadge
-        [value]="notifications.toString()"
-        [severity]="getNotificationsState()"
-      ></button>
+      <!-- Right Side: Menu Items -->
+      <div class="flex align-items-center gap-3">
+        <!-- Search bar -->
+        <div class="hidden md:flex"> <!-- Hide on mobile -->
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input
+              type="text"
+              pInputText
+              class="w-full"
+              placeholder="Search..."
+              (input)="onSearch($event)"
+            />
+          </span>
+        </div>
 
-      <!-- Help -->
-      <button
-        pButton
-        icon="pi pi-question-circle"
-        class="p-button-rounded p-button-text"
-      ></button>
+        <!-- Action Buttons -->
+        <div class="flex align-items-center gap-2">
+          <!-- Theme Toggle -->
+          <button
+            pButton
+            [icon]="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
+            class="p-button-rounded p-button-text"
+            (click)="toggleTheme()"
+          ></button>
 
-      <!-- User menu -->
-      <div class="flex align-items-center gap-2">
-        <p-avatar
-          image="user.jpg"
-          shape="circle"
-          size="normal"
-          [pTooltip]="'Nome Utente'"
-          tooltipPosition="bottom"
-        >
-        </p-avatar>
-        <p-menu #menu [model]="userMenuItems" [popup]="true"> </p-menu>
-        <button
-          pButton
-          icon="pi pi-user"
-          class="p-button-text p-button-rounded"
-          (click)="menu.toggle($event)"
-        ></button>
+          <!-- Notifications -->
+          <button
+            pButton
+            icon="pi pi-bell"
+            class="p-button-rounded p-button-text"
+            pBadge
+            [value]="notifications.toString()"
+            [severity]="getNotificationsState()"
+          ></button>
+
+          <!-- Help -->
+          <button
+            pButton
+            icon="pi pi-question-circle"
+            class="p-button-rounded p-button-text"
+          ></button>
+
+          <!-- User Profile -->
+          <div class="flex align-items-center gap-2">
+            <p-avatar
+              image="user.jpg"
+              shape="circle"
+              size="normal"
+              [pTooltip]="'Nome Utente'"
+              tooltipPosition="bottom"
+            ></p-avatar>
+            <p-menu #menu [model]="userMenuItems" [popup]="true"></p-menu>
+            <button
+              pButton
+              icon="pi pi-user"
+              class="p-button-text p-button-rounded"
+              (click)="menu.toggle($event)"
+            ></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
-
+<!-- Breadcrumb -->
+<div class="container">
+  <div class="py-2">
+    <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+  </div>
+</div>

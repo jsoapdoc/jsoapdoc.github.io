@@ -1,1 +1,145 @@
-<p>home works!</p>
+<div class="min-h-screen">
+  <!-- Hero Section -->
+  <section class="py-8 md:py-6">
+    <div class="container">
+      <div class="text-center">
+        <h1 class="text-6xl font-bold mb-4">
+          Document Your SOAP Services with Ease
+        </h1>
+        <p class="text-xl text-700 mb-5 line-height-3">
+          JSoapDoc is a powerful documentation generator that makes your SOAP
+          services crystal clear. Write less, document more.
+        </p>
+        <div class="hero-buttons flex justify-content-center align-items-center gap-3">
+          <p-button
+            label="Get Started"
+            icon="pi pi-arrow-right"
+            iconPos="right"
+            size="large"
+            [style]="{ 'background-color': '#FFD700', 'color': 'var(--custom-text-color)' }"
+          >
+          </p-button>
+          <a href="https://github.com/jsoapdoc/jsoapdoc" target="_blank">
+            <p-button
+              label="View on GitHub"
+              icon="pi pi-github"
+              iconPos="right"
+              severity="secondary"
+              size="large"
+              [outlined]="true"
+            >
+            </p-button>
+          </a>
+          <a
+            href="https://mvnrepository.com/artifact/io.github.jsoapdoc/jsoapdoc-core"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p-button
+              label="Maven Repository"
+              icon="pi pi-external-link"
+              iconPos="right"
+              severity="secondary"
+              size="large"
+              [outlined]="true"
+            >
+            </p-button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Code Preview -->
+      <div class="card-dependency mt-6">
+        <p-card>
+          <div class="surface-900 p-4 border-round">
+            <pre><code>{{ codeExample }}</code></pre>
+          </div>
+        </p-card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-8 surface-ground">
+    <div class="container">
+      <h2 class="text-4xl font-bold text-center mb-6">Key Features</h2>
+      <div class="features-grid">
+        <div class="col-12 md:col-4 p-3" *ngFor="let feature of features">
+          <p-card class="flex">
+            <ng-template pTemplate="header">
+              <div class="text-center pt-3">
+                <i [class]="feature.icon + ' text-4xl icon-custom'"></i>
+              </div>
+            </ng-template>
+            <h3 class="text-xl font-medium text-center mb-3">
+              {{ feature.title }}
+            </h3>
+            <p class="text-center text-700 line-height-3">
+              {{ feature.description }}
+            </p>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Start Section -->
+  <section class="py-8">
+    <div class="container">
+      <h2 class="text-4xl font-bold text-center mb-6">Quick Start</h2>
+      <div class="grid">
+        <div class="col-12 md:col-4 p-3">
+          <p-card>
+            <ng-template pTemplate="header">
+              <div class="text-center">
+                <p-badge
+                  value="1"
+                  badgeSize="xlarge"
+                  severity="primary"
+                ></p-badge>
+              </div>
+            </ng-template>
+            <h3 class="text-xl font-medium text-center mb-3">Installation</h3>
+            <div class="text-center">
+              <p-chip label="io.github.jsoapdoc"></p-chip>
+            </div>
+          </p-card>
+        </div>
+        <div class="col-12 md:col-4 p-3">
+          <p-card>
+            <ng-template pTemplate="header">
+              <div class="text-center">
+                <p-badge
+                  value="2"
+                  badgeSize="xlarge"
+                  severity="primary"
+                ></p-badge>
+              </div>
+            </ng-template>
+            <h3 class="text-xl font-medium text-center mb-3">Configuration</h3>
+            <p class="text-center text-700">
+              Set up your config file with basic options
+            </p>
+          </p-card>
+        </div>
+        <div class="col-12 md:col-4 p-3">
+          <p-card>
+            <ng-template pTemplate="header">
+              <div class="text-center">
+                <p-badge
+                  value="3"
+                  badgeSize="xlarge"
+                  severity="primary"
+                ></p-badge>
+              </div>
+            </ng-template>
+            <h3 class="text-xl font-medium text-center mb-3">Generate</h3>
+            <p class="text-center text-700">
+              Run the generator and get your documentation
+            </p>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

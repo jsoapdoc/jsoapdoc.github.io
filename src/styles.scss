@@ -1,6 +1,6 @@
 :root {
   // Font family
-  --font-family: "Roboto", sans-serif;
+  --custom-font-family: "Roboto", sans-serif;
 
   // Font weights
   --font-weight-light: 300;
@@ -23,21 +23,21 @@
 
   // Light theme
   --background-color: #ffffff;
-  --text-color: #000000;
+  --custom-text-color: #64748b;
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--custom-font-family);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
   background-color: var(--background-color);
-  color: var(--text-color);
+  color: var(--custom-text-color);
 }
  // Dark theme
 body.dark-theme {
-  --background-color: #333;
-  --text-color: #f1f1f1;
+  --background-color: #343A40;
+  --custom-text-color: #f1f1f1;
 }
 
 // Utility classes
