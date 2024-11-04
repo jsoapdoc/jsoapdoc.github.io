@@ -1,4 +1,12 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  inject,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { ButtonModule } from 'primeng/button';
@@ -26,6 +34,8 @@ import { filter } from 'rxjs';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
+  @ViewChild('navbar') navbar!: ElementRef;
+  @Output() themeChange = new EventEmitter<boolean>();
   items: MenuItem[] | undefined;
   home: MenuItem | undefined;
   userMenuItems: MenuItem[] | undefined;
@@ -77,8 +87,11 @@ export class NavbarComponent implements OnInit {
 
   toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;
+    this.themeChange.emit(this.isDarkTheme);
     document.body.classList.toggle('dark-theme', this.isDarkTheme);
     document.body.style.transition = 'background-color 0.5s ease';
+    this.navbar.nativeElement.classList.toggle('dark-theme', this.isDarkTheme);
+    this.navbar.nativeElement.style.transition = 'background-color 0.5s ease';
   }
 
   updateBreadcrumb() {

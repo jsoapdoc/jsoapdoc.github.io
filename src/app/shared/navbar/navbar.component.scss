@@ -1,10 +1,14 @@
 :host {
   ::ng-deep .surface-card {
-    background-color: var(--background-color) !important;
     border: 1px solid #e5e7eb;
   }
 
+  ::ng-deep .surface-card.dark-theme {
+    background-color: var(--navbar-bg-color) !important;
+  }
+
   ::ng-deep nav.p-breadcrumb.p-component {
+    font-family: var(--custom-font-family);
     width: 600px;
   }
 

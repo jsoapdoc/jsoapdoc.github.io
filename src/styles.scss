@@ -22,8 +22,13 @@
   --line-height-relaxed: 1.75;
 
   // Light theme
-  --background-color: #ffffff;
+  --background-color: #e6e5e5;
   --custom-text-color: #64748b;
+
+  --scrollbar-width: 12px;
+  --scrollbar-thumb-color: #888;
+  --scrollbar-track-color: #f1f1f1;
+  --scrollbar-thumb-hover-color: #666;
 }
 
 body {
@@ -34,10 +39,17 @@ body {
   background-color: var(--background-color);
   color: var(--custom-text-color);
 }
- // Dark theme
+// Dark theme
 body.dark-theme {
-  --background-color: #343A40;
+  --background-color: #343a40;
+  --navbar-bg-color: #e6e5e5;
   --custom-text-color: #f1f1f1;
+}
+
+.dark-theme {
+  --scrollbar-thumb-color: #64748b;
+  --scrollbar-track-color: #e6e5e5;
+  --scrollbar-thumb-hover-color: #434d5c;
 }
 
 // Utility classes
@@ -71,4 +83,22 @@ body.dark-theme {
 }
 .font-bold {
   font-weight: var(--font-weight-bold);
+}
+
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color);
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -13,6 +13,9 @@ import { ChipModule } from 'primeng/chip';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  @ViewChild('featuresArea') featuresArea!: ElementRef;
+  @Input() isDarkTheme: boolean = false;
+
   codeExample = `Import in your pom.xml
 
 <dependency>
@@ -39,7 +42,7 @@ export class HomeComponent {
     {
       title: 'Annotation-Based Setup',
       description:
-        'Easily create documentation using annotations, simplifying integration with your codebase.',
+        'Easily create documentation using annotations, for your code.',
       icon: 'pi pi-tags',
     },
   ];
