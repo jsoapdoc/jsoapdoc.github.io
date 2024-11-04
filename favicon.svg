@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<style type="text/css">
+    .st0{fill:#172538;}
+    .st1{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+    .st2{opacity:0.5;}
+    .st3{opacity:0.8;}
+    .st4{fill:#F7931E;}
+    .st5{fill:#967f00;}
+    .st6{fill:#1e2023;}
+</style>
+<g id="Livello_1" transform="translate(0, 2)">
+        <!-- Main hexagon -->
+        <path class="st5" d="M16,4 L26,9 L26,19 L16,24 L6,19 L6,9 Z"
+              stroke="#967f00" stroke-width="0.5"/>
+
+        <!-- Simple angle brackets -->
+        <path d="M12,10 L8,14 L12,18"
+              fill="none" stroke="#1e2023" stroke-width="0.6"/>
+        <path d="M20,10 L24,14 L20,18"
+              fill="none" stroke="#1e2023" stroke-width="0.6"/>
+
+        <!-- Doc symbol -->
+        <rect class="st6" x="13.5" y="10" width="5" height="8" fill="#1e2023"/>
+        <rect class="st5" x="14" y="11" width="4" height="0.7" fill="#967f00"/>
+        <rect class="st5" x="14" y="13" width="4" height="0.7" fill="#967f00"/>
+        <rect class="st5" x="14" y="15" width="4" height="0.7" fill="#967f00"/>
+</g>
+</svg>
