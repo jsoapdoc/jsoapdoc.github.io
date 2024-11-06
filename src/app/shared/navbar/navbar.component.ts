@@ -14,9 +14,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { AvatarModule } from 'primeng/avatar';
 import { MenuModule } from 'primeng/menu';
 import { BadgeModule } from 'primeng/badge';
+import { DialogModule } from 'primeng/dialog';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -29,6 +31,8 @@ import { filter } from 'rxjs';
     AvatarModule,
     MenuModule,
     BadgeModule,
+    DialogModule,
+    FormsModule
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
@@ -42,6 +46,8 @@ export class NavbarComponent implements OnInit {
   notifications: number = 0;
   isDarkTheme = false;
   severity: string = 'info';
+  searchModalVisible: boolean = false;
+  searchQuery: string = '';
 
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
@@ -81,8 +87,13 @@ export class NavbarComponent implements OnInit {
     ];
   }
 
-  onSearch(event: any) {
-    // logica ricerca
+  showSearchModal() {
+    this.searchModalVisible = true;
+  }
+
+  performSearch() {
+    console.log("Testo di ricerca:", this.searchQuery);
+    this.searchModalVisible = false;
   }
 
   toggleTheme() {

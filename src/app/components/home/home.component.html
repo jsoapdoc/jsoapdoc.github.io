@@ -11,7 +11,7 @@
           services crystal clear. Write less, document more.
         </p>
         <div
-          class="hero-buttons flex justify-content-center align-items-center gap-3"
+          class="hero-buttons hero-buttons flex flex-wrap md:flex-row justify-content-center items-center gap-3"
         >
           <p-button
             label="Get Started"
@@ -54,12 +54,8 @@
       </div>
 
       <!-- Code Preview -->
-      <div class="card-dependency mt-6">
-        <p-card>
-          <div class="surface-900 p-4 border-round">
-            <pre><code>{{ codeExample }}</code></pre>
-          </div>
-        </p-card>
+      <div class="container flex flex-col justify-content-center items-center mt-6">
+        <pre><code>{{ codeExample }}</code></pre>
       </div>
     </div>
   </section>
@@ -68,7 +64,7 @@
   <section class="py-8 surface-ground">
     <div class="container">
       <h2 class="text-4xl font-bold text-center mb-6">Key Features</h2>
-      <div class="features-grid">
+      <div class="grid">
         <div class="col-12 md:col-4 p-3" *ngFor="let feature of features">
           <p-card class="flex">
             <ng-template pTemplate="header">

@@ -19,9 +19,9 @@ export class HomeComponent {
   codeExample = `Import in your pom.xml
 
 <dependency>
-    <groupId>io.github.jsoapdoc</groupId>
-    <artifactId>jsoapdoc-core</artifactId>
-    <version>0.0.3</version>
+  <groupId>io.github.jsoapdoc</groupId>
+  <artifactId>jsoapdoc-core</artifactId>
+  <version>0.0.3</version>
 </dependency>
 
 `;

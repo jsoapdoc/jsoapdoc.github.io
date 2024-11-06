@@ -14,15 +14,12 @@
   color: #ffd700;
 }
 
+pre {
+  background-color: var(--surface-900);
+  border-radius: 6px;
+}
+
 :host {
-  .card-dependency {
-    ::ng-deep .p-card {
-      .p-card-content,
-      .p-card-body {
-        padding: 0;
-      }
-    }
-  }
 
   .hero-buttons {
     ::ng-deep .p-button {
