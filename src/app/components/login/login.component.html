@@ -1,0 +1,29 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex mb-3">
+  <input type="email" id="email" name="email" formControlName="email" placeholder="Email" />
+  <input type="password" id="password" name="password" formControlName="password" placeholder="Password" />
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+
+  <!-- Opzionale: Messaggi di errore -->
+  <div
+    *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors"
+  >
+    <small *ngIf="loginForm.get('email')?.errors?.['required']"
+      >Email è obbligatoria</small
+    >
+    <small *ngIf="loginForm.get('email')?.errors?.['email']"
+      >Email non valida</small
+    >
+  </div>
+  <div
+    *ngIf="
+      loginForm.get('password')?.touched && loginForm.get('password')?.errors
+    "
+  >
+    <small *ngIf="loginForm.get('password')?.errors?.['required']"
+      >Password è obbligatoria</small
+    >
+    <small *ngIf="loginForm.get('password')?.errors?.['minlength']"
+      >Password troppo corta</small
+    >
+  </div>
+</form>

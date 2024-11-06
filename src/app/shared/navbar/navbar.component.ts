@@ -15,10 +15,11 @@ import { AvatarModule } from 'primeng/avatar';
 import { MenuModule } from 'primeng/menu';
 import { BadgeModule } from 'primeng/badge';
 import { DialogModule } from 'primeng/dialog';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -32,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     MenuModule,
     BadgeModule,
     DialogModule,
-    FormsModule
+    FormsModule,
+    NgIf
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
@@ -51,6 +53,9 @@ export class NavbarComponent implements OnInit {
 
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
+  private authService = inject(AuthService);
+
+  isAuthenticated$ = this.authService.isAuthenticated();
 
   ngOnInit() {
     this.router.events
@@ -81,7 +86,8 @@ export class NavbarComponent implements OnInit {
         label: 'Logout',
         icon: 'pi pi-sign-out',
         command: () => {
-          // logica logout
+          this.logout();
+          this.router.navigate(['/login']);
         },
       },
     ];
@@ -92,7 +98,7 @@ export class NavbarComponent implements OnInit {
   }
 
   performSearch() {
-    console.log("Testo di ricerca:", this.searchQuery);
+    console.log('Testo di ricerca:', this.searchQuery);
     this.searchModalVisible = false;
   }
 
@@ -149,5 +155,9 @@ export class NavbarComponent implements OnInit {
       default:
         return 'info';
     }
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }
